@@ -1,15 +1,26 @@
-<form action="/data/" method = "POST">
-    <input type="radio" name="link_type" value="album" id="album" checked>
-    <label for="album">Album</label>
-    <input type="radio" name="link_type" value="song" id="song">
-    <label for="song">Song</label>
-    <br>Link<input type="url" name="link">
-    <input type="submit" value="Submit">
-</form>
+<!DOCTYPE html>
+<html lang="en">
 
-<html>
-    <body>
-        <h2>{{name}}</h2>
-        <img src="{{image_url}}" alt="{{name}}">
-    </body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Album Art App</title>
+</head>
+
+<body>
+    <form action="/data/" method="POST">
+        <input type="radio" name="link_type" value="album" id="album" checked>
+        <label for="album">Album</label>
+        <input type="radio" name="link_type" value="song" id="song">
+        <label for="song">Song</label>
+        <br>Link<input type="url" name="link">
+        <input type="submit" value="Submit">
+    </form>
+
+    {% for image in images %}
+    <h2>{{name}} ({{image['height']}} x {{image['width']}})</h2>
+    <img src="{{image['url']}}" alt="{{name}}">
+    {% endfor %}
+</body>
+
 </html>

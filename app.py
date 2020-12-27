@@ -30,37 +30,16 @@ def data():
         if link_type == 'album':
             results = sp.album(link)
             name = results['name']
-            image_url = results['images'][0]['url']
+            # image_url = results['images'][0]['url']
+            images = results['images']
         elif link_type == 'song':
             results = sp.track(link)
-            name = results['name']
-            image_url = results['album']['images'][0]['url']
+            name = results['album']['name']
+            # image_url = results['album']['images'][0]['url']
+            images = results['album']['images']
 
-        return render_template('index.html', name = name, image_url = image_url)
-
-# class AlbumSongObj:
-#     APP_CLIENT_ID = os.environ.get('SPOTIFY_CLIENT_ID')
-#     APP_CLIENT_SECRET = os.environ.get('SPOTIFY_CLIENT_SECRET')
-
-#     sp = spotipy.Spotify(auth_manager=SpotifyClientCredentials(client_id=APP_CLIENT_ID,
-#                                                             client_secret=APP_CLIENT_SECRET))
-    
-#     def __init__(self, link, itemType):
-#         self.link = link
-#         self.itemType = itemType
-#         self.imageURL
-#         self.name
-
-#     def get_image_url():
-#         if itemType == 'album':
-#             results = sp.album(link)
-#             name = results['name']
-#             image_url = results['images'][0]['url']
-#         elif itemType == 'song':
-#             results = sp.track(url)
-#             name = results['name']
-#             image_url = results['album']['images'][0]['url']
-
+        # return render_template('index.html', name = name, image_url = image_url)
+        return render_template('index.html', name = name, images = images)
 
 if __name__ == "__main__":
     app.run(debug=True)
