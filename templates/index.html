@@ -1,0 +1,15 @@
+<form action="/data/" method = "POST">
+    <input type="radio" name="link_type" value="album" id="album" checked>
+    <label for="album">Album</label>
+    <input type="radio" name="link_type" value="song" id="song">
+    <label for="song">Song</label>
+    <br>Link<input type="url" name="link">
+    <input type="submit" value="Submit">
+</form>
+
+<html>
+    <body>
+        <h2>{{name}}</h2>
+        <img src="{{image_url}}" alt="{{name}}">
+    </body>
+</html>
