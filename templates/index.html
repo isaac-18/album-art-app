@@ -21,7 +21,7 @@
         <li>Hit submit and save the image</li>
     </ol>
 
-    <div>
+    <div class="form-grid-container">
         <form action="/data/" method="POST">
             <!-- <input type="radio" name="link_type" value="album" id="album" checked>
         <label for="album">Album</label>
@@ -44,10 +44,16 @@
 
     <h2>{{errorCode}}</h2>
 
-    {% for image in images %}
-    <h2>{{name}} ({{image['height']}} x {{image['width']}})</h2>
-    <img src="{{image['url']}}" alt="{{name}}">
-    {% endfor %}
+    <h2>{{name}}</h2>
+    <div class="image-grid-container">
+        {% for image in images %}
+        <!-- <h2>{{name}} ({{image['height']}} x {{image['width']}})</h2> -->
+        <div>
+            <h4>({{image['height']}} x {{image['width']}})</h4>
+            <img src="{{image['url']}}" alt="{{name}}">
+        </div>
+        {% endfor %}
+    </div>
 </body>
 
 </html>

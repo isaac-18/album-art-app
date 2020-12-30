@@ -4,6 +4,7 @@
 
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 100%;
 }
 
 form {
@@ -31,7 +32,6 @@ textarea {
   border-radius: 4px;
 }
 
-
 input[type=submit] {
   margin: 15px 0;
 }
@@ -39,4 +39,25 @@ input[type=submit] {
 img {
   max-width: 100%;
   height: auto;
+}
+
+.image-grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-column-gap: 50px;
+  justify-content: start;
+}
+
+
+@media only screen and (max-width: 768px) {
+  body {
+    font-size: 75%;
+  }
+
+  .image-grid-container {
+    display: grid;
+    grid-template-columns: auto;
+    grid-column-gap: 25px;
+    justify-content: start;
+  }
 }

@@ -40,7 +40,6 @@ def data():
             errorCode = 'Error: Invalid link and/or link type. Please double check and try again.'
             return render_template('index.html', errorCode = errorCode)
 
-        # return render_template('index.html', name = name, image_url = image_url)
         return render_template('index.html', name = name, images = images)
 
 if __name__ == "__main__":
