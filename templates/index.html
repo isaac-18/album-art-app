@@ -5,17 +5,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Album Art App</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 
+
 <body>
-    <form action="/data/" method="POST">
-        <input type="radio" name="link_type" value="album" id="album" checked>
+    <h1>Album Art App</h1>
+    <p>Get the album art to your favorite album or song!</p>
+    <p>How to use:</p>
+    <ol>
+        <li>Open Spotify and find the album/song you're looking for</li>
+        <li>Right click it and select "Share"</li>
+        <li>Click "Copy Song Link" or "Copy Album Link"</li>
+        <li>Paste the link below and specify if the link is for an album or song</li>
+        <li>Hit submit and save the image</li>
+    </ol>
+
+    <div>
+        <form action="/data/" method="POST">
+            <!-- <input type="radio" name="link_type" value="album" id="album" checked>
         <label for="album">Album</label>
+        
         <input type="radio" name="link_type" value="song" id="song">
-        <label for="song">Song</label>
-        <br>Link<input type="url" name="link">
-        <input type="submit" value="Submit">
-    </form>
+        <label for="song">Song</label> -->
+
+            <label for="link">Link</label>
+            <input type="url" name="songlink" id="link" placeholder="Ex: https://open.spotify.com/track/...">
+
+            <label for="link_type">Link Type</label>
+            <select name="link_type" id="link_type">
+                <option value="album">Album</option>
+                <option value="song">Song</option>
+            </select>
+
+            <input type="submit" value="Submit">
+        </form>
+    </div>
 
     {% for image in images %}
     <h2>{{name}} ({{image['height']}} x {{image['width']}})</h2>
