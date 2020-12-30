@@ -24,19 +24,21 @@ def data():
         # form_data = request.form
         # return render_template('data.html',form_data = form_data)
         
-        link_type = request.form.get('link_type')
         link = request.form.get('songlink')
+        link_type = request.form.get('link_type')
 
-        if link_type == 'album':
-            results = sp.album(link)
-            name = results['name']
-            images = results['images']
-        elif link_type == 'song':
-            results = sp.track(link)
-            name = results['album']['name']
-            images = results['album']['images']
-        else:
-            return f"Invalid link or link type. Please try again."
+        try:
+            if link_type == 'album':
+                results = sp.album(link)
+                name = results['name']
+                images = results['images']
+            elif link_type == 'song':
+                results = sp.track(link)
+                name = results['album']['name']
+                images = results['album']['images']
+        except:
+            errorCode = 'Error: Invalid link and/or link type. Please double check and try again.'
+            return render_template('index.html', errorCode = errorCode)
 
         # return render_template('index.html', name = name, image_url = image_url)
         return render_template('index.html', name = name, images = images)

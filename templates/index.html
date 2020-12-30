@@ -42,6 +42,8 @@
         </form>
     </div>
 
+    <h2>{{errorCode}}</h2>
+
     {% for image in images %}
     <h2>{{name}} ({{image['height']}} x {{image['width']}})</h2>
     <img src="{{image['url']}}" alt="{{name}}">
